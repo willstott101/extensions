@@ -88,6 +88,7 @@ class PdfBookHooks {
 				$wgUploadPath  = $wgServer.$wgUploadPath;
 				$wgScript      = $wgServer.$wgScript;
 				foreach( $articles as $title ) {
+					if (!$title->userCan( 'read' )) continue;
 					$ttext = $title->getPrefixedText();
 					if( !in_array( $ttext, $exclude ) ) {
 						$article = new Article( $title );
